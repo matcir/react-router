@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import DefaultLayout from "./layouts/DefaultLayout"
 import HomePage from "./pages/Homepage"
-import AboutUsPage from "./pages/AboutusPage"
+import AboutUsPage from "./pages/AboutUsPage"
 import ProductsPage from "./pages/ProductsPage"
 
 export default function App() {
