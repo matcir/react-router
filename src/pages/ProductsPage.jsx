@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function ProductsPage() {
 
@@ -22,9 +23,11 @@ export default function ProductsPage() {
                     {products?.map(product => (
                         <div key={product.id} className="col">
                             <div className="card h-100">
-                                <figure>
-                                    <img src={product.image} className="card-img-top img-fluid img-fixed" alt={product.title} />
-                                </figure>
+                                <Link to={`/products/${product.id}`}>
+                                    <figure>
+                                        <img src={product.image} className="card-img-top img-fluid img-fixed" alt={product.title} />
+                                    </figure>
+                                </Link>
                                 <div className="my-card-body card-body">
                                     <h4 className="card-title">{product.title}</h4>
                                     <p className="card-text">{`${product.price.toFixed(2)}€`}</p>
