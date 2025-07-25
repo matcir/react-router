@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
+
+
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function SelectedProduct() {
     const { id } = useParams()
     const apiUrl = `https://fakestoreapi.com/products/${id}`
     const [product, setProduct] = useState()
+    let navigate = useNavigate();
 
     useEffect(() => {
         fetch(apiUrl)
@@ -12,16 +15,19 @@ export default function SelectedProduct() {
             .then(data => {
                 setProduct(data)
             })
-    }, [])
+    }, [id])
 
     return (
         <>
             <div className="container">
 
-
+                <div className="d-flex justify-content-around">
+                    <button className="btn" onClick={(e) => navigate(`/products/${product.id - 1}`)}>Prev</button>
+                    <button className="btn" onClick={(e) => navigate(`/products/${product.id + 1}`)}>Next</button>
+                </div>
 
                 <div className="card h-100">
-                    <figure>
+                    <figure className="p-3">
                         <img src={product?.image} className="card-img-top img-fluid img-fixed" alt={product?.title} />
                     </figure>
                     <div className="my-card-body card-body">
