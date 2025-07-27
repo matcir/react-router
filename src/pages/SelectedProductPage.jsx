@@ -3,7 +3,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function SelectedProduct() {
+export default function SelectedProductPage() {
     const { id } = useParams()
     const apiUrl = `https://fakestoreapi.com/products/${id}`
     const [product, setProduct] = useState()
