@@ -7,15 +7,20 @@ export default function SelectedProductPage() {
     const { id } = useParams()
     const apiUrl = `https://fakestoreapi.com/products/${id}`
     const [product, setProduct] = useState()
+    const [loading, setLoading] = useState(true);
     let navigate = useNavigate();
 
     useEffect(() => {
+        setLoading(true);
         fetch(apiUrl)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
+                setLoading(false)
             })
     }, [id])
+
+
 
     return (
         <>

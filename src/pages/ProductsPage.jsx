@@ -5,15 +5,25 @@ export default function ProductsPage() {
 
     const productsUrl = "https://fakestoreapi.com/products"
     const [products, setProducts] = useState(null)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         fetch(productsUrl)
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
+                setLoading(false);
             })
     }, [productsUrl])
 
+    if (loading) {
+        <div className="text-center p-5">
+            <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading data...</span>
+            </div>
+        </div>
+    }
 
     return (
         <>
